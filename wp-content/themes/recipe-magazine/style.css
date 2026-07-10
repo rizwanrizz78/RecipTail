@@ -1,0 +1,83 @@
+/*
+Theme Name: Recipe Magazine
+Theme URI:
+Author: Jules
+Author URI:
+Description: A premium-quality WordPress recipe blog theme with a warm vintage food magazine aesthetic.
+Version: 1.0.0
+Requires at least: 5.8
+Tested up to: 6.3
+Requires PHP: 7.4
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: recipe-magazine
+Tags: blog, food, recipe, custom-colors, custom-menu, featured-images, flexible-header, responsive-layout, theme-options
+*/
+
+:root {
+	/* Primary colors */
+	--ink: #2A2420;
+	--paper: #FBF6EC;
+	--card: #FFFFFF;
+	--navy: #1F2E3D;
+	--mustard: #E3A73A;
+	--brick: #C1442B;
+	--line: #E3D9C6;
+
+	/* Recipe Card / Info pills */
+	--pill-bg: #F3ECDC;
+
+	/* Typography */
+	--font-body: 'Work Sans', sans-serif;
+	--font-heading: 'Bebas Neue', sans-serif;
+}
+
+/* Base Setup */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-body);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+a {
+	color: var(--ink);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	color: var(--brick);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-heading);
+	color: var(--navy);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-weight: 400; /* Bebas Neue is typically 400 weight but bold visually */
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+/* Utility Classes */
+.container {
+	width: 100%;
+	max-width: 1366px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
