@@ -27,10 +27,6 @@ get_header();
 			?>
 		</div>
 
-		<div class="single-sidebar-area">
-			<?php get_sidebar(); ?>
-		</div>
-
 	</div>
 </main><!-- #main -->
 
