@@ -3,13 +3,8 @@
    ========================================================================== */
 
 .afc-article {
-	--ink: #2A2420;
-	--paper: #FBF6EC;
-	--card: #FFFFFF;
-	--navy: #1F2E3D;
-	--mustard: #E3A73A;
-	--brick: #C1442B;
-	--line: #E3D9C6;
+	/* The actual variables are declared in :root inside style.css, but we redefine them here
+	   for scope safety if this is loaded independently or as requested by the prompt structure. */
 	font-family: 'Work Sans', -apple-system, Helvetica, Arial, sans-serif;
 	color: var(--ink);
 	background: var(--paper);
@@ -28,7 +23,7 @@
 }
 
 .afc-hero { text-align: center; margin-bottom: 8px; }
-.afc-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+.afc-hero h1 { font-size: clamp(34px, 6vw, 54px); margin-bottom: 20px; }
 .afc-eyebrow {
 	display: inline-block;
 	font-family: 'Bebas Neue', Impact, sans-serif;
@@ -39,6 +34,7 @@
 	padding: 5px 14px;
 	border-radius: 999px;
 	margin-bottom: 14px;
+	text-transform: uppercase;
 }
 .afc-hero p.afc-dek {
 	font-size: 17px;
@@ -82,6 +78,7 @@
 	color: var(--mustard);
 	font-size: 14px;
 	margin: 0 0 8px;
+	text-transform: uppercase;
 }
 .afc-cta h3 {
 	color: #FFFFFF;
@@ -104,6 +101,7 @@
 	padding: 13px 30px;
 	border-radius: 8px;
 	transition: transform 0.15s ease;
+	text-transform: uppercase;
 }
 .afc-cta-btn:hover { transform: translateY(-2px); }
 
