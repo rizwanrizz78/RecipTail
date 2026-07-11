@@ -3,7 +3,7 @@ Theme Name: Recipe Magazine
 Theme URI:
 Author: Jules
 Author URI:
-Description: A premium-quality WordPress recipe blog theme with a warm vintage food magazine aesthetic.
+Description: A premium-quality WordPress recipe blog theme with a warm vintage diner menu board aesthetic.
 Version: 1.0.0
 Requires at least: 5.8
 Tested up to: 6.3
@@ -24,12 +24,25 @@ Tags: blog, food, recipe, custom-colors, custom-menu, featured-images, flexible-
 	--brick: #C1442B;
 	--line: #E3D9C6;
 
-	/* Recipe Card / Info pills */
-	--pill-bg: #F3ECDC;
+	/* Muted Text */
+	--muted-1: #55483C;
+	--muted-2: #6B5B3E;
+	--muted-3: #8A7A5E;
+
+	/* Tinted Backgrounds */
+	--tint-brick: #FBEAE3;
+	--tint-mustard: #F3ECDC;
+
+	/* CTA Colors */
+	--cta-text: #F7EFDD;
+	--cta-copy: #D9CEB9;
+
+	/* Tip Box */
+	--tip-text: #6B4136;
 
 	/* Typography */
-	--font-body: 'Work Sans', sans-serif;
-	--font-heading: 'Bebas Neue', sans-serif;
+	--font-body: 'Work Sans', -apple-system, Helvetica, Arial, sans-serif;
+	--font-heading: 'Bebas Neue', Impact, sans-serif;
 }
 
 /* Base Setup */
@@ -56,11 +69,7 @@ img {
 a {
 	color: var(--ink);
 	text-decoration: none;
-	transition: color 0.3s ease;
-}
-
-a:hover {
-	color: var(--brick);
+	transition: all 0.15s ease;
 }
 
 /* Headings */
@@ -68,16 +77,72 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: var(--font-heading);
 	color: var(--navy);
 	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	font-weight: 400; /* Bebas Neue is typically 400 weight but bold visually */
-	line-height: 1.2;
+	letter-spacing: 0.03em;
+	font-weight: 400;
+	line-height: 1.1;
 	margin-bottom: 1rem;
 }
 
-/* Utility Classes */
+h1 {
+	font-size: clamp(34px, 6vw, 54px);
+}
+h2 {
+	font-size: 26px;
+}
+h3 {
+	font-size: 24px;
+}
+
+/* Base utility for centered constrained content (outside of single post specific) */
 .container {
 	width: 100%;
-	max-width: 1366px;
+	max-width: 1200px; /* Archives/Homepage container */
 	margin: 0 auto;
 	padding: 0 20px;
+}
+
+/* Standardized Content Card styling used globally */
+.content-card {
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	padding: 26px 24px;
+}
+
+/* Standard Eyebrow Tag */
+.eyebrow-tag {
+	display: inline-block;
+	font-family: var(--font-heading);
+	letter-spacing: 0.25em;
+	font-size: 13px;
+	color: var(--brick);
+	background: var(--tint-brick);
+	padding: 5px 14px;
+	border-radius: 999px;
+	text-transform: uppercase;
+}
+
+/* Global Forms/Inputs */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+textarea {
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 12px 16px;
+	font-family: var(--font-body);
+	font-size: 16px;
+	color: var(--ink);
+	width: 100%;
+	transition: border-color 0.15s ease;
+}
+
+input:focus, textarea:focus {
+	outline: none;
+	border-color: var(--brick);
 }

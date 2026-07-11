@@ -1,6 +1,6 @@
-# Recipe Magazine - Premium WordPress Theme
+# Recipe Magazine (RecipTail Diner Theme) - Premium WordPress Theme
 
-A premium-quality WordPress recipe blog theme with a warm vintage food magazine aesthetic. Built with pure PHP, HTML5, CSS3, Vanilla JS, and native WordPress features (no external plugins required).
+A premium-quality WordPress recipe blog theme with a warm vintage diner menu board aesthetic. Built with pure PHP, HTML5, CSS3, Vanilla JS, and native WordPress features.
 
 ## 1. Theme Installation
 
@@ -10,87 +10,89 @@ A premium-quality WordPress recipe blog theme with a warm vintage food magazine 
 4. Choose the `.zip` file and click **Install Now**.
 5. Once installed, click **Activate**.
 
-## 2. How to customize logo
-
-1. Go to **Appearance > Customize > Site Identity**.
-2. Upload your logo using the **Logo** setting (recommended size: 250px by 250px or a horizontal aspect ratio).
-3. If no logo is uploaded, the theme will cleanly fallback to displaying the Site Title in the styled `Bebas Neue` font.
-
-## 3. How to create menus
-
-1. Go to **Appearance > Menus**.
-2. Create a menu and assign it to **Primary Menu (Categories)**. This displays below the logo/header and is intended for Recipe Categories (e.g., Breakfast, Lunch).
-3. Create a second menu and assign it to **Secondary Menu (Pages)**. This displays in the very top dark bar and is intended for static pages (About, Contact, Disclaimer).
-4. Create a third menu and assign it to **Footer Menu**.
-
-## 4. How homepage sections work
-
-The homepage automatically populates without needing a page builder:
-- **Featured Recipe:** The single main featured recipe is pulled from a post where you checked "Mark as Featured Recipe".
-- **Latest Recipes:** Shows a grid of the newest published posts.
-- **Popular Now:** Shows recipes sorted by view count. The limit (e.g., top 5) can be changed in **Appearance > Customize > Popular Recipes Settings**.
-
-## 5. How to create recipe posts
-
-1. Go to **Posts > Add New**.
-2. Write your post title and add content exactly as you normally would using the Gutenberg editor. This content will become the "Article structure" (Intro, Images, etc.).
-3. Add a **Featured Image** in the right sidebar.
-4. Assign a **Category**.
-
-## 6. How recipe cards are generated
-
-Below the normal post editor, you will find the **Recipe Data** meta box.
-1. Fill out Prep Time, Cook Time, Total Time, Servings, and Calories.
-2. Add **Ingredients** using the "Add Ingredient" repeater button.
-3. Add **Instructions** using the "Add Instruction" repeater button.
-4. If you add Ingredients and Instructions, the beautifully styled Recipe Card and valid JSON-LD schema markup will automatically be generated at the bottom of your post.
-
-## 7. How to use CTA shortcode
-
-Inside the Gutenberg editor, use a Shortcode block and paste the following to create an affiliate CTA box:
-
-```
-[recipe_cta label="WHAT WE COOKED WITH" title="The Air Fryer Behind Every Recipe Here" description="Check the model we use for crispy results every time." button="Check Price" url="https://affiliate-link.com"]
-```
-
-## 8. How to create affiliate boxes
-
-Use the product box shortcode for a horizontal layout with an image:
-
-```
-[product_box image="https://example.com/image.jpg" title="Product Name" description="A brief description of this cool product." button="Buy Now" url="https://affiliate-link.com"]
-```
-
-## 9. Customizer options
+## 2. Global Customizer Settings
 
 Go to **Appearance > Customize**:
 - **Social Media Links:** Enter URLs for Instagram, Pinterest, Facebook, etc. The icons will automatically appear in the top bar and footer.
-- **Popular Recipes Settings:** Define how many popular posts to show on the homepage.
+- **Popular Recipes Settings:** Define how many popular posts to show on the homepage grid.
+- **Disclosure Settings:** Enter your standard affiliate disclosure text (e.g., "This post contains affiliate links...") which is automatically output anywhere you use the `[rt_disclosure]` shortcode.
 
-## 10. Widget setup
+## 3. Creating Recipe Posts (The Shortcode System)
 
-Go to **Appearance > Widgets**:
-- **Sidebar:** Add the "Recipe Magazine: About Author" widget, the "Recipe Magazine: Newsletter" widget, or any native WordPress widget. This sidebar appears on single posts.
-- **Footer:** Add widgets here to populate the dark footer area above the copyright line.
+This theme uses a completely code-free shortcode architecture to build perfectly styled magazine layouts natively in the Gutenberg editor. Do not use block page builders — just type paragraphs and drop in these shortcodes.
 
-## 11. Recommended image sizes
+### Post Headers & Disclosures
+At the top of your post, type:
 
-- **Featured Recipe Hero:** 1200x800px (3:2 aspect ratio)
-- **Recipe Grid Cards:** 600x800px (Portrait 3:4 aspect ratio) or 4:3 depending on exact cropping preference. The CSS handles cropping via `aspect-ratio: 4/3` and `object-fit: cover` to keep grid uniform regardless of original upload.
-- **In-post images:** Maximum width 780px to align perfectly with the centered article content.
+```
+[rt_eyebrow]LABOR DAY • BBQ FOR A CROWD[/rt_eyebrow]
+[rt_dek]Nine crowd-tested recipes for the last big cookout of summer.[/rt_dek]
+[rt_disclosure position="top"]
+```
+*(The theme automatically inserts your Featured Image directly below this top disclosure to match the design flow).*
 
-## 12. Theme file structure
+### Recipe Cards
+To add a beautiful recipe card, wrap your content like this:
 
-- `style.css` - Theme header and CSS variables.
-- `functions.php` - Theme setup and script enqueuing.
-- `front-page.php` - Homepage layout (Featured, Latest, Popular).
-- `single.php` - Single post structure.
-- `inc/` - Core logic, Customizer, Meta boxes, Shortcodes, Widgets.
-- `template-parts/` - Reusable components (`content-single.php`, `content-recipe-card.php`).
-- `assets/` - Compiled CSS and JS.
+```
+[rt_recipe number="1" title="Classic Smash Burger Bar" prep="15 min" cook="10 min" serves="12"]
 
-## 13. Troubleshooting
+[rt_blurb]Crispy-edged smash burgers with a build-your-own toppings station.[/rt_blurb]
 
-- **Recipe card not showing:** Ensure you have added at least one Ingredient and one Instruction in the Recipe Data box.
-- **Schema errors:** Ensure you have filled out the Recipe Name (Post Title) and added a Featured Image.
-- **Icons missing:** Check that you have actually entered a URL for the specific social network in the Customizer. Empty fields hide the icon automatically.
+[rt_ingredients]
+- 4 lbs 80/20 ground beef
+- 12 burger buns
+- 12 slices American cheese
+- Salt and pepper
+[/rt_ingredients]
+
+[rt_instructions]
+1. Portion beef into 3 oz balls. Do not season yet.
+2. Heat griddle very hot. Smash balls flat immediately with a spatula.
+3. Season, cook 2 minutes, flip, add cheese, cook 1 more minute.
+[/rt_instructions]
+
+[rt_tip]Cook in batches of 4-5 patties so the griddle stays hot enough to sear.[/rt_tip]
+
+[/rt_recipe]
+```
+*Note: JSON-LD SEO Schema is generated automatically for every `[rt_recipe]` block.*
+
+### Affiliate Promos & Decorators
+Add a CTA box or section divider anywhere:
+
+```
+[rt_divider]
+
+[rt_cta label="GRILLING GEAR THAT MAKES THIS EASIER" title="The Tool Set Behind Every Recipe Here" button="SHOP THE SET" link="https://amzn.to/XXXX"]
+A good instant-read thermometer takes the guesswork out.
+[/rt_cta]
+```
+
+### Outro / Fine Print
+At the end of your post:
+
+```
+[rt_outro title="Your Menu, Sorted"]
+Prep the salads ahead and the grill only has to handle burgers.
+[/rt_outro]
+
+[rt_disclosure position="bottom"]
+```
+
+## 4. Native Gutenberg Styling
+
+Any text typed outside a shortcode is automatically styled as the vintage magazine body copy:
+- **Paragraphs** are neatly spaced.
+- **Heading 2 blocks** get the bold Bebas Neue treatment.
+- **Quote blocks** automatically become highlighted tip callouts with a brick-colored border.
+- **List blocks** are styled to match.
+
+## 5. Homepage Featuring
+
+To feature a post in the large hero grid on the homepage, check the **"Mark as Featured Article"** checkbox in the right sidebar of the post editor.
+
+## 6. Recommended Image Sizes
+
+- **Featured Hero / Recipe Images:** 1200x800px (3:2 aspect ratio).
+- **Archive Grid Cards:** 600x800px (Portrait 3:4 aspect ratio) or 4:3 depending on exact cropping preference. The CSS handles cropping via `aspect-ratio: 4/3` and `object-fit: cover`.
