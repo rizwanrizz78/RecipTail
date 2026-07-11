@@ -88,6 +88,7 @@ function recipe_magazine_scripts() {
 
 	// Custom CSS
 	wp_enqueue_style( 'recipe-magazine-main-css', RECIPE_MAGAZINE_URI . 'assets/css/main.css', array( 'recipe-magazine-style' ), RECIPE_MAGAZINE_VERSION );
+	wp_enqueue_style( 'recipe-magazine-editorial-css', RECIPE_MAGAZINE_URI . 'assets/css/editorial.css', array( 'recipe-magazine-main-css' ), RECIPE_MAGAZINE_VERSION );
 
 	// Main JS
 	wp_enqueue_script( 'recipe-magazine-main-js', RECIPE_MAGAZINE_URI . 'assets/js/main.js', array(), RECIPE_MAGAZINE_VERSION, true );
