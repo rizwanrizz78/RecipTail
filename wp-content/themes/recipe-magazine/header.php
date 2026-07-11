@@ -19,50 +19,11 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'recipe-magazine' ); ?></a>
 
-	<!-- Top Navigation Bar -->
-	<div class="top-bar">
-		<div class="container top-bar-inner">
-			<?php if ( has_nav_menu( 'secondary' ) ) : ?>
-				<nav class="secondary-navigation" aria-label="<?php esc_attr_e( 'Secondary Menu', 'recipe-magazine' ); ?>">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'secondary',
-							'menu_class'     => 'secondary-menu',
-							'depth'          => 1,
-						)
-					);
-					?>
-				</nav>
-			<?php endif; ?>
-
-			<div class="header-social-icons">
-				<?php
-				$social_links = array(
-					'instagram' => get_theme_mod( 'social_instagram' ),
-					'pinterest' => get_theme_mod( 'social_pinterest' ),
-					'facebook'  => get_theme_mod( 'social_facebook' ),
-					'youtube'   => get_theme_mod( 'social_youtube' ),
-					'tiktok'    => get_theme_mod( 'social_tiktok' ),
-					'x'         => get_theme_mod( 'social_x' ),
-				);
-
-				foreach ( $social_links as $network => $url ) {
-					if ( ! empty( $url ) ) {
-						echo '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer" class="social-icon social-' . esc_attr( $network ) . '" aria-label="' . esc_attr( ucfirst( $network ) ) . '">';
-						echo recipe_magazine_get_social_svg( $network );
-						echo '</a>';
-					}
-				}
-				?>
-			</div>
-		</div>
-	</div>
-
 	<!-- Main Header -->
 	<header id="masthead" class="site-header sticky-header">
 		<div class="container header-inner">
 
+			<!-- Left: Custom Logo -->
 			<div class="site-branding">
 				<?php
 				if ( has_custom_logo() ) {
@@ -71,40 +32,44 @@
 					?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php
-					$recipe_magazine_description = get_bloginfo( 'description', 'display' );
-					if ( $recipe_magazine_description || is_customize_preview() ) {
-						?>
-						<p class="site-description"><?php echo $recipe_magazine_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-						<?php
-					}
 				}
 				?>
 			</div>
 
 			<!-- Mobile Menu Toggle -->
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
+				<!-- Styled hamburger icon using SVG for consistency -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'recipe-magazine' ); ?></span>
 			</button>
 
-			<nav id="site-navigation" class="main-navigation">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'menu_class'     => 'primary-menu',
-					)
-				);
-				?>
-			</nav>
+			<!-- Right: Static Pages Menu + Search -->
+			<div class="header-right-nav primary-menu-wrapper">
+				<nav id="site-navigation" class="main-navigation">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'secondary', // Secondary handles static pages now
+							'menu_class'     => 'primary-menu',
+							'fallback_cb'    => false, // No Sample Page fallback
+						)
+					);
+					?>
+				</nav>
 
-			<!-- Search Icon -->
-			<button class="header-search-toggle" aria-label="<?php esc_attr_e( 'Open Search', 'recipe-magazine' ); ?>">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-			</button>
+				<!-- Search Icon/Box placed directly below the menu on desktop, or stacked in mobile -->
+				<div class="header-search-container">
+					<form role="search" method="get" class="header-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<label>
+							<span class="screen-reader-text"><?php _e( 'Search for:', 'recipe-magazine' ); ?></span>
+							<input type="search" class="header-search-field" placeholder="<?php echo esc_attr_e( 'Search recipes...', 'recipe-magazine' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+						</label>
+						<button type="submit" class="header-search-submit">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+						</button>
+					</form>
+				</div>
+			</div>
 
 		</div>
 	</header>
