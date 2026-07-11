@@ -88,6 +88,40 @@
 	display: none;
 }
 
+/* Category Navigation Bar (Desktop) */
+.desktop-category-bar {
+	background-color: var(--card);
+	border-bottom: 1px solid var(--line);
+	padding: 15px 0;
+}
+.desktop-category-bar-inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+}
+.category-pill-link {
+	display: inline-block;
+	font-family: var(--font-heading);
+	letter-spacing: 0.1em;
+	font-size: 15px;
+	color: var(--navy);
+	background: var(--tint-mustard);
+	padding: 6px 18px;
+	border-radius: 999px;
+	text-transform: uppercase;
+	transition: all 0.15s ease;
+}
+.category-pill-link:hover {
+	background: var(--mustard);
+	color: #fff;
+	transform: translateY(-1px);
+}
+
+.mobile-categories-nav {
+	display: none; /* Hidden on desktop */
+}
+
 /* ==========================================================================
    Buttons (The ONE button style)
    ========================================================================== */
@@ -124,10 +158,24 @@ input[type="submit"]:hover,
    ========================================================================== */
 .recipe-grid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 28px;
 	margin-top: 30px;
 	margin-bottom: 40px;
+}
+.recipe-grid-small {
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.recipe-grid-small .entry-title {
+	font-size: 20px;
+}
+.recipe-grid-small .recipe-card-content {
+	padding: 16px;
+}
+.recipe-grid-small .button {
+	font-size: 14px;
+	padding: 10px 16px;
 }
 .recipe-card-loop {
 	background: var(--card);
@@ -364,13 +412,47 @@ input[type="submit"]:hover,
 		grid-template-columns: 1fr;
 	}
 	/* Mobile Menu */
+	.desktop-category-bar {
+		display: none;
+	}
+	.mobile-categories-nav {
+		display: block;
+		width: 100%;
+		border-bottom: 1px solid var(--line);
+		padding-bottom: 15px;
+		margin-bottom: 5px;
+	}
+	.mobile-nav-heading {
+		font-family: var(--font-heading);
+		font-size: 18px;
+		color: var(--brick);
+		margin-bottom: 10px;
+		letter-spacing: 0.05em;
+	}
+	.mobile-categories-list {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 20px 0;
+	}
+	.mobile-categories-list li {
+		margin-bottom: 10px;
+	}
+	.mobile-categories-list a {
+		font-family: var(--font-heading);
+		font-size: 18px;
+		color: var(--navy);
+		letter-spacing: 0.05em;
+	}
+	.mobile-categories-list a:hover {
+		color: var(--mustard);
+	}
 	.header-right-nav {
 		display: none;
 		position: absolute;
 		top: 100%;
 		left: 0;
 		width: 100%;
-		background: var(--card);
+		background: var(--paper); /* matching paper background for mobile menu */
 		padding: 20px;
 		border-bottom: 1px solid var(--line);
 		flex-direction: column;

@@ -45,6 +45,23 @@
 
 			<!-- Right: Static Pages Menu + Search -->
 			<div class="header-right-nav primary-menu-wrapper">
+
+				<!-- Mobile-only Categories Section (injected into hamburger) -->
+				<div class="mobile-categories-nav">
+					<h3 class="mobile-nav-heading"><?php _e( 'RECIPES', 'recipe-magazine' ); ?></h3>
+					<ul class="mobile-categories-list">
+						<?php
+						$categories = get_categories( array( 'hide_empty' => true ) );
+						if ( ! empty( $categories ) ) {
+							foreach ( $categories as $cat ) {
+								echo '<li><a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . esc_html( strtoupper( $cat->name ) ) . '</a></li>';
+							}
+						}
+						?>
+					</ul>
+					<h3 class="mobile-nav-heading"><?php _e( 'PAGES', 'recipe-magazine' ); ?></h3>
+				</div>
+
 				<nav id="site-navigation" class="main-navigation">
 					<?php
 					wp_nav_menu(
@@ -73,6 +90,19 @@
 
 		</div>
 	</header>
+
+	<!-- Desktop Category Navigation Bar -->
+	<div class="desktop-category-bar">
+		<div class="container desktop-category-bar-inner">
+			<?php
+			if ( ! empty( $categories ) ) {
+				foreach ( $categories as $cat ) {
+					echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" class="category-pill-link">' . esc_html( strtoupper( $cat->name ) ) . '</a>';
+				}
+			}
+			?>
+		</div>
+	</div>
 
 	<!-- Full Screen Search Overlay -->
 	<div class="search-overlay">
