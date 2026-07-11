@@ -6,8 +6,9 @@
 	font-family: 'Work Sans', -apple-system, Helvetica, Arial, sans-serif;
 	color: var(--ink);
 	background: var(--paper);
-	max-width: 780px;
-	margin: 0 auto;
+	max-width: 780px !important;
+	width: 100%;
+	margin: 0 auto !important;
 	padding: 32px 20px 64px;
 	line-height: 1.6;
 }
@@ -184,6 +185,8 @@ p.afc-recipe-blurb {
 }
 .afc-recipe-img {
 	width: 100%;
+	max-width: 100%;
+	height: auto;
 	border-radius: 10px;
 	margin: 18px 0;
 	display: block;

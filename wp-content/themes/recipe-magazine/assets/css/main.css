@@ -3,34 +3,6 @@
 /* ==========================================================================
    Header & Navigation
    ========================================================================== */
-.top-bar {
-	background-color: var(--navy);
-	color: #fff;
-	font-size: 0.85rem;
-	padding: 5px 0;
-}
-.top-bar a {
-	color: #ccc;
-}
-.top-bar a:hover {
-	color: var(--mustard);
-}
-.top-bar-inner {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.secondary-menu {
-	list-style: none;
-	display: flex;
-	gap: 15px;
-	margin: 0;
-	padding: 0;
-}
-.header-social-icons {
-	display: flex;
-	gap: 10px;
-}
 .site-header {
 	background-color: var(--paper); /* Updated from white to paper */
 	border-bottom: 1px solid var(--line);
@@ -52,6 +24,12 @@
 	font-size: 2.5rem;
 	color: var(--navy);
 	letter-spacing: 0.05em;
+}
+.header-right-nav {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 10px;
 }
 .primary-menu {
 	list-style: none;
@@ -77,48 +55,37 @@
 	border: none;
 	cursor: pointer;
 }
-.header-search-toggle {
-	background: none;
-	border: none;
-	cursor: pointer;
-	color: var(--navy);
-}
-
-/* Mobile Menu & Search Overlay */
-.search-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(31, 46, 61, 0.95); /* Navy transparent */
-	z-index: 1000;
-	display: none;
-	justify-content: center;
+.header-search-form {
+	display: flex;
 	align-items: center;
 }
-.search-overlay.active {
-	display: flex;
+.header-search-field {
+	padding: 6px 12px;
+	font-size: 14px;
+	border-radius: 6px 0 0 6px;
+	border-right: none;
 }
-.search-overlay-close {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	background: none;
-	border: none;
-	color: #fff;
+.header-search-submit {
+	padding: 6px 12px;
+	border-radius: 0 6px 6px 0;
+	background: var(--mustard);
+	color: var(--navy) !important;
+	border: 1px solid var(--line);
+	border-left: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	cursor: pointer;
 }
-.search-overlay-content input[type="search"] {
-	font-size: 2rem;
-	padding: 10px;
-	border: none;
-	border-bottom: 2px solid var(--mustard);
-	background: transparent;
-	color: #fff;
-	width: 100%;
-	max-width: 600px;
-	border-radius: 0;
+.header-search-submit:hover {
+	transform: none;
+	background: var(--brick);
+	color: #fff !important;
+}
+
+/* Cleanup overlay styles as search is now directly in header */
+.search-overlay, .search-overlay.active, .search-overlay-close, .search-overlay-content input[type="search"] {
+	display: none;
 }
 
 /* ==========================================================================
@@ -224,32 +191,10 @@ input[type="submit"]:hover,
 .entry-title a:hover {
 	color: var(--brick);
 }
-.entry-summary {
-	color: var(--muted-1);
-	font-size: 15px;
-	margin-bottom: 16px;
-	line-height: 1.5;
-}
-.recipe-card-meta-row {
-	display: flex;
-	gap: 10px;
-	flex-wrap: wrap;
-	margin-bottom: 15px;
-}
-.stat-pill {
-	background: var(--tint-mustard);
-	border-radius: 999px;
-	padding: 6px 14px;
-	font-size: 13px;
-	font-weight: 600;
-	color: var(--muted-2);
-}
-.recipe-read-more {
-	font-family: var(--font-heading);
-	color: var(--brick);
-	letter-spacing: 0.08em;
-	font-size: 16px;
-	text-transform: uppercase;
+.recipe-read-more-btn {
+	display: block;
+	width: 100%;
+	margin-top: 15px;
 }
 
 /* ==========================================================================
@@ -352,6 +297,15 @@ input[type="submit"]:hover,
 }
 
 /* ==========================================================================
+   Comments
+   ========================================================================== */
+#comments, #respond {
+	margin-bottom: 40px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid var(--line);
+}
+
+/* ==========================================================================
    Sidebar & Widgets
    ========================================================================== */
 .card-widget {
@@ -376,62 +330,15 @@ input[type="submit"]:hover,
    ========================================================================== */
 .site-footer {
 	background-color: var(--navy);
-	color: var(--cta-copy); /* D9CEB9 */
-	padding: 60px 0 30px;
+	padding: 40px 0;
 	margin-top: 60px;
-}
-.footer-widgets-inner {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 30px;
-	margin-bottom: 40px;
-}
-.footer-widget .widget-title {
-	color: #fff;
-	border-bottom-color: var(--mustard);
-}
-.footer-widget a {
-	color: var(--cta-text);
-}
-.footer-widget a:hover {
-	color: var(--mustard);
 }
 .site-info-inner {
 	text-align: center;
-	border-top: 1px solid rgba(255,255,255,0.1);
-	padding-top: 30px;
-}
-.footer-site-title a {
-	color: #fff;
-	font-family: var(--font-heading);
-	font-size: 28px;
-	letter-spacing: 0.05em;
-}
-.footer-menu {
-	list-style: none;
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	padding: 0;
-	margin: 20px 0;
-}
-.footer-menu a {
-	color: var(--cta-copy);
-	font-size: 15px;
-}
-.footer-menu a:hover {
-	color: var(--mustard);
-}
-.footer-social-icons {
-	margin-bottom: 20px;
-}
-.footer-social-icons a {
-	color: #fff;
-	margin: 0 10px;
 }
 .footer-copyright {
 	font-size: 13px;
-	color: var(--muted-3);
+	color: var(--cta-copy); /* Clean muted cream text */
 }
 
 /* ==========================================================================
@@ -447,36 +354,47 @@ input[type="submit"]:hover,
 		grid-template-columns: 1fr;
 		padding: 24px;
 	}
-	.primary-menu {
-		display: none;
-		flex-direction: column;
-		position: absolute;
-		top: 100%;
-		left: 0;
-		width: 100%;
-		background: var(--paper);
-		padding: 20px;
-		border-bottom: 1px solid var(--line);
-	}
-	.primary-menu.active {
-		display: flex;
-	}
-	.menu-toggle {
-		display: block;
-		font-size: 1.5rem;
-		color: var(--navy);
-	}
 }
 @media (max-width: 560px) {
 	.recipe-grid {
 		grid-template-columns: 1fr;
 	}
-	.top-bar-inner {
-		flex-direction: column;
-		gap: 10px;
-	}
 	/* Single breakpoint for columns collapsing */
 	.afc-cols {
 		grid-template-columns: 1fr;
+	}
+	/* Mobile Menu */
+	.header-right-nav {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background: var(--card);
+		padding: 20px;
+		border-bottom: 1px solid var(--line);
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 20px;
+	}
+	.header-right-nav.active {
+		display: flex;
+	}
+	.primary-menu {
+		flex-direction: column;
+		width: 100%;
+	}
+	.menu-toggle {
+		display: block;
+		color: var(--navy);
+	}
+	.header-search-container {
+		width: 100%;
+	}
+	.header-search-form {
+		width: 100%;
+	}
+	.header-search-field {
+		width: 100%;
 	}
 }
