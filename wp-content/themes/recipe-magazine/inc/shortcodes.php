@@ -5,14 +5,6 @@
  */
 
 /**
- * [rt_eyebrow]
- */
-function recipe_magazine_rt_eyebrow( $atts, $content = null ) {
-	return '<span class="afc-eyebrow">' . esc_html( wp_strip_all_tags( $content ) ) . '</span>';
-}
-add_shortcode( 'rt_eyebrow', 'recipe_magazine_rt_eyebrow' );
-
-/**
  * [rt_dek]
  */
 function recipe_magazine_rt_dek( $atts, $content = null ) {
@@ -28,12 +20,12 @@ function recipe_magazine_rt_disclosure( $atts ) {
 		'position' => 'top',
 	), $atts, 'rt_disclosure' );
 
-	$text = get_theme_mod( 'rt_disclosure_text', 'This post contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.' );
-
 	if ( 'bottom' === $atts['position'] ) {
+		$text = get_theme_mod( 'rt_disclosure_text_bottom', '<strong>Affiliate Disclosure:</strong> This post contains affiliate links, including links to Amazon. As an Amazon Associate, we earn from qualifying purchases at no extra cost to you. We only recommend products we believe add real value to your cooking.' );
 		return '<div class="afc-disclosure-bottom">' . wp_kses_post( $text ) . '</div>';
 	}
 
+	$text = get_theme_mod( 'rt_disclosure_text_top', 'This post contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.' );
 	return '<p class="afc-disclosure-top">' . wp_kses_post( $text ) . '</p>';
 }
 add_shortcode( 'rt_disclosure', 'recipe_magazine_rt_disclosure' );
@@ -114,6 +106,7 @@ function recipe_magazine_rt_recipe( $atts, $content = null ) {
 		'prep'   => '',
 		'cook'   => '',
 		'serves' => '',
+		'image'  => '',
 	), $atts, 'rt_recipe' );
 
 	// We extract nested shortcodes manually using regex or just relying on do_shortcode if they are registered.
@@ -169,6 +162,10 @@ function recipe_magazine_rt_recipe( $atts, $content = null ) {
 
 		<?php if ( ! empty( $blurb ) ) : ?>
 			<p class="afc-recipe-blurb"><?php echo wp_kses_post( $blurb ); ?></p>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $atts['image'] ) ) : ?>
+			<img src="<?php echo esc_url( $atts['image'] ); ?>" class="afc-recipe-img" alt="<?php echo esc_attr( $atts['title'] ); ?>" loading="lazy" />
 		<?php endif; ?>
 
 		<div class="afc-stats">

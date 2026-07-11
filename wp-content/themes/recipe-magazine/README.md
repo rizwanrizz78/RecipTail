@@ -25,11 +25,10 @@ This theme uses a completely code-free shortcode architecture to build perfectly
 At the top of your post, type:
 
 ```
-[rt_eyebrow]LABOR DAY • BBQ FOR A CROWD[/rt_eyebrow]
 [rt_dek]Nine crowd-tested recipes for the last big cookout of summer.[/rt_dek]
 [rt_disclosure position="top"]
 ```
-*(The theme automatically inserts your Featured Image directly below this top disclosure to match the design flow).*
+*(The theme automatically assigns the category badge (eyebrow) above the title, and inserts your Featured Image directly below the top disclosure to match the design flow).*
 
 ### Recipe Cards
 To add a beautiful recipe card, wrap your content like this:

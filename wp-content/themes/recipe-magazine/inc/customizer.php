@@ -106,13 +106,24 @@ function recipe_magazine_customize_register( $wp_customize ) {
 		'priority'    => 40,
 	) );
 
-	$wp_customize->add_setting( 'rt_disclosure_text', array(
+	$wp_customize->add_setting( 'rt_disclosure_text_top', array(
 		'default'           => 'This post contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.',
 		'sanitize_callback' => 'sanitize_textarea_field',
 	) );
-	$wp_customize->add_control( 'rt_disclosure_text', array(
-		'label'       => __( 'Global Affiliate Disclosure Text', 'recipe-magazine' ),
-		'description' => __( 'Used by the [rt_disclosure] shortcode.', 'recipe-magazine' ),
+	$wp_customize->add_control( 'rt_disclosure_text_top', array(
+		'label'       => __( 'Top Disclosure Text', 'recipe-magazine' ),
+		'description' => __( 'Used by [rt_disclosure position="top"]. Short plain text version.', 'recipe-magazine' ),
+		'section'     => 'recipe_magazine_disclosure',
+		'type'        => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'rt_disclosure_text_bottom', array(
+		'default'           => '<strong>Affiliate Disclosure:</strong> This post contains affiliate links, including links to Amazon. As an Amazon Associate, we earn from qualifying purchases at no extra cost to you. We only recommend products we believe add real value to your cooking.',
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+	$wp_customize->add_control( 'rt_disclosure_text_bottom', array(
+		'label'       => __( 'Bottom Disclosure Text', 'recipe-magazine' ),
+		'description' => __( 'Used by [rt_disclosure position="bottom"]. Can be longer and contain basic HTML like strong tags.', 'recipe-magazine' ),
 		'section'     => 'recipe_magazine_disclosure',
 		'type'        => 'textarea',
 	) );
