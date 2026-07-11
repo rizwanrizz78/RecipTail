@@ -1,245 +1,214 @@
 /* ==========================================================================
-   Editorial Single Post & New Recipe Cards
+   Editorial Single Post & New Recipe Cards (AFC Layout)
    ========================================================================== */
 
-.editorial-article {
+.afc-article {
+	--ink: #2A2420;
+	--paper: #FBF6EC;
+	--card: #FFFFFF;
+	--navy: #1F2E3D;
+	--mustard: #E3A73A;
+	--brick: #C1442B;
+	--line: #E3D9C6;
+	font-family: 'Work Sans', -apple-system, Helvetica, Arial, sans-serif;
+	color: var(--ink);
+	background: var(--paper);
 	max-width: 780px;
 	margin: 0 auto;
-	background-color: var(--paper); /* Ensures warm background if container differs */
-	padding: 40px 20px;
-}
-.editorial-header {
-	text-align: center;
-	margin-bottom: 40px;
-}
-.editorial-header .article-title {
-	font-family: var(--font-heading);
-	font-size: 4rem;
-	color: var(--navy);
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin-bottom: 25px;
-	line-height: 1.1;
-}
-.editorial-category-wrapper {
-	margin-bottom: 25px;
-}
-.editorial-category-badge {
-	display: inline-block;
-	background: #FBEAE3; /* Light beige/pink */
-	color: var(--brick);
-	padding: 6px 16px;
-	border-radius: 20px;
-	font-family: var(--font-heading);
-	font-size: 1.1rem;
-	letter-spacing: 1.5px;
-	text-transform: uppercase;
-}
-.editorial-description p {
-	font-size: 1.25rem;
-	color: #6B4136; /* Softer brown */
-	margin-bottom: 25px;
-	max-width: 650px;
-	margin-left: auto;
-	margin-right: auto;
+	padding: 32px 20px 64px;
 	line-height: 1.6;
 }
-.editorial-disclosure p {
-	font-size: 0.85rem;
-	color: #A99787; /* Muted beige */
-	margin-bottom: 30px;
-	font-style: italic;
-}
-.editorial-featured-image {
-	margin-bottom: 50px;
-}
-.editorial-featured-image img {
-	border-radius: 14px;
-	width: 100%;
-}
-.editorial-content-flow {
-	font-size: 1.15rem;
-	color: var(--ink);
-	line-height: 1.8;
-}
-.editorial-content-flow p {
-	margin-bottom: 25px;
-}
-.editorial-content-flow h2 {
-	margin-top: 50px;
-	margin-bottom: 25px;
-}
-.recipe-divider {
-	border: 0;
-	border-top: 3px dashed var(--mustard);
-	margin: 60px 0;
-}
+.afc-article * { box-sizing: border-box; }
 
-/* Updated CTA Component */
-.editorial-cta {
-	background-color: var(--navy);
-	border-radius: 14px;
-	padding: 40px 30px;
-	text-align: center;
-	margin: 50px 0;
-}
-.editorial-cta-label {
-	background: var(--mustard);
+.afc-article h1, .afc-article h2, .afc-article h3 {
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	letter-spacing: 0.03em;
 	color: var(--navy);
-	padding: 5px 12px;
-	border-radius: 4px;
-	font-family: var(--font-heading);
-	letter-spacing: 1px;
-	font-size: 1rem;
-	display: inline-block;
-	margin-bottom: 20px;
-}
-.editorial-cta-title {
-	color: #fff;
-	font-size: 2.5rem;
-	margin-bottom: 15px;
-}
-.editorial-cta-desc {
-	color: #E3D9C6; /* Soft beige */
-	font-size: 1.1rem;
-	margin-bottom: 25px;
-}
-.editorial-cta-btn {
-	background: var(--brick);
-	border-radius: 8px;
-	font-family: var(--font-heading);
-	font-size: 1.3rem;
-	padding: 12px 30px;
-	letter-spacing: 1px;
-}
-.editorial-cta-btn:hover {
-	background: #A33822;
+	line-height: 1.1;
 }
 
-/* Repeatable Recipe Cards */
-.recipe-blocks-container {
-	display: flex;
-	flex-direction: column;
-	gap: 60px;
+.afc-hero { text-align: center; margin-bottom: 8px; }
+.afc-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+.afc-eyebrow {
+	display: inline-block;
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	letter-spacing: 0.25em;
+	font-size: 13px;
+	color: var(--brick);
+	background: #FBEAE3;
+	padding: 5px 14px;
+	border-radius: 999px;
+	margin-bottom: 14px;
 }
-.recipe-card {
-	background: #fff;
+.afc-hero p.afc-dek {
+	font-size: 17px;
+	color: #55483C;
+	max-width: 560px;
+	margin: 0 auto 20px;
+}
+
+.afc-disclosure-top {
+	font-size: 12.5px;
+	color: #8A7A5E;
+	text-align: center;
+	margin: 0 0 18px;
+}
+
+.afc-img-placeholder, .afc-featured-image img {
+	width: 100%;
+	border-radius: 10px;
+	margin: 18px 0;
+	display: block;
+}
+
+.afc-divider {
+	border: none;
+	height: 3px;
+	background: repeating-linear-gradient(90deg, var(--mustard) 0 10px, transparent 10px 18px);
+	margin: 36px 0;
+}
+
+.afc-cta {
+	background: var(--navy);
+	border-radius: 14px;
+	padding: 24px;
+	margin: 28px 0;
+	text-align: center;
+	color: #F7EFDD;
+}
+.afc-cta p.afc-cta-label {
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	letter-spacing: 0.15em;
+	color: var(--mustard);
+	font-size: 14px;
+	margin: 0 0 8px;
+}
+.afc-cta h3 {
+	color: #FFFFFF;
+	font-size: 24px;
+	margin: 0 0 10px;
+}
+.afc-cta p.afc-cta-copy {
+	color: #D9CEB9;
+	font-size: 15px;
+	margin: 0 0 18px;
+}
+.afc-cta-btn {
+	display: inline-block;
+	background: var(--brick);
+	color: #FFFFFF !important;
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	letter-spacing: 0.08em;
+	font-size: 17px;
+	text-decoration: none;
+	padding: 13px 30px;
+	border-radius: 8px;
+	transition: transform 0.15s ease;
+}
+.afc-cta-btn:hover { transform: translateY(-2px); }
+
+.afc-intro { font-size: 16px; margin: 22px 0 8px; }
+
+.afc-recipe {
+	background: var(--card);
 	border: 1px solid var(--line);
 	border-radius: 14px;
-	padding: 40px;
+	padding: 26px 24px;
+	margin: 22px 0;
+	position: relative;
 }
-.recipe-card-header {
+.afc-recipe-head {
 	display: flex;
 	align-items: center;
-	gap: 20px;
-	margin-bottom: 25px;
+	gap: 14px;
+	margin-bottom: 4px;
 }
-.recipe-number-badge {
+.afc-num {
+	flex-shrink: 0;
 	width: 44px;
 	height: 44px;
-	flex-shrink: 0;
-	background: var(--mustard);
-	border: 2px solid var(--navy);
 	border-radius: 50%;
+	background: var(--mustard);
+	color: var(--navy);
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	font-size: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: var(--font-heading);
-	font-size: 1.6rem;
-	color: var(--navy);
+	border: 2px solid var(--navy);
 }
-.recipe-card-title {
-	font-family: var(--font-heading);
-	font-size: 2.6rem;
-	color: var(--navy);
+.afc-recipe h2 {
+	font-size: 26px;
 	margin: 0;
-	text-transform: uppercase;
+	color: var(--navy);
 }
-.recipe-card-desc {
-	font-size: 1.1rem;
-	color: #555;
-	margin-bottom: 30px;
+.afc-recipe-blurb {
+	color: #55483C;
+	font-size: 15px;
+	margin: 6px 0 4px;
 }
-.recipe-card-image {
+.afc-recipe-img {
 	width: 100%;
 	border-radius: 10px;
-	margin-bottom: 30px;
-}
-.recipe-card-meta {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-	margin-bottom: 40px;
-}
-.recipe-pill {
-	background: #FBF6EC; /* Beige background */
-	padding: 8px 18px;
-	border-radius: 20px;
-	font-size: 0.95rem;
-	color: var(--navy);
-	font-weight: 500;
-}
-.recipe-card-body {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 50px;
-	margin-bottom: 30px;
-}
-.recipe-col-heading {
-	font-family: var(--font-heading);
-	font-size: 1.8rem;
-	color: var(--brick);
-	text-transform: uppercase;
-	margin-bottom: 20px;
-	letter-spacing: 1px;
-}
-.recipe-ingredients-list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.recipe-ingredients-list li {
-	padding: 12px 0;
-	border-bottom: 1px solid var(--line);
-	font-size: 1.05rem;
-}
-.recipe-ingredients-list li:last-child {
-	border-bottom: none;
-}
-.recipe-instructions-list {
-	padding-left: 20px;
-	margin: 0;
-}
-.recipe-instructions-list li {
-	margin-bottom: 20px;
-	font-size: 1.05rem;
-	line-height: 1.6;
-}
-.recipe-tip-box {
-	background: #FBEAE3;
-	border-left: 3px solid var(--brick);
-	border-radius: 6px;
-	padding: 20px;
-	margin-top: 20px;
-}
-.recipe-tip-box p {
-	color: #6B4136;
-	margin: 0;
-	font-size: 1.05rem;
+	margin: 18px 0;
+	display: block;
 }
 
-@media (max-width: 768px) {
-	.recipe-card-body {
-		grid-template-columns: 1fr;
-		gap: 40px;
-	}
-	.editorial-header .article-title {
-		font-size: 3rem;
-	}
-	.recipe-card-title {
-		font-size: 2.2rem;
-	}
-	.recipe-card {
-		padding: 25px;
-	}
+.afc-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 14px 0 18px;
+}
+.afc-stat {
+	background: #F3ECDC;
+	border-radius: 999px;
+	padding: 6px 14px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #6B5B3E;
+}
+
+.afc-cols {
+	display: grid;
+	grid-template-columns: 1fr 1.3fr;
+	gap: 22px;
+}
+@media (max-width: 560px) {
+	.afc-cols { grid-template-columns: 1fr; }
+}
+.afc-recipe h4 {
+	font-family: 'Bebas Neue', Impact, sans-serif;
+	letter-spacing: 0.06em;
+	font-size: 15px;
+	color: var(--brick);
+	margin: 0 0 8px;
+}
+.afc-recipe ul, .afc-recipe ol {
+	margin: 0;
+	padding-left: 20px;
+	font-size: 14.5px;
+}
+.afc-recipe li { margin-bottom: 6px; }
+
+.afc-tip {
+	margin-top: 14px;
+	font-size: 13.5px;
+	background: #FBEAE3;
+	border-left: 3px solid var(--brick);
+	padding: 10px 14px;
+	border-radius: 6px;
+	color: #6B4136;
+}
+
+.afc-outro h2 { font-size: 28px; margin-bottom: 10px; }
+.afc-outro p { font-size: 15.5px; }
+
+.afc-disclosure-bottom {
+	font-size: 12.5px;
+	color: #8A7A5E;
+	background: #F3ECDC;
+	border-radius: 8px;
+	padding: 14px 16px;
+	margin-top: 30px;
 }

@@ -18,21 +18,21 @@ function recipe_magazine_cta_shortcode( $atts, $content = null ) {
 
 	ob_start();
 	?>
-	<div class="recipe-cta-box editorial-cta">
+	<div class="afc-cta">
 		<?php if ( ! empty( $atts['label'] ) ) : ?>
-			<span class="recipe-cta-label editorial-cta-label"><?php echo esc_html( $atts['label'] ); ?></span>
+			<p class="afc-cta-label"><?php echo esc_html( $atts['label'] ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $atts['title'] ) ) : ?>
-			<h3 class="recipe-cta-title editorial-cta-title"><?php echo esc_html( $atts['title'] ); ?></h3>
+			<h3><?php echo esc_html( $atts['title'] ); ?></h3>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $atts['description'] ) ) : ?>
-			<p class="recipe-cta-description editorial-cta-desc"><?php echo esc_html( $atts['description'] ); ?></p>
+			<p class="afc-cta-copy"><?php echo esc_html( $atts['description'] ); ?></p>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $atts['url'] ) && ! empty( $atts['button'] ) ) : ?>
-			<a href="<?php echo esc_url( $atts['url'] ); ?>" class="recipe-cta-button editorial-cta-btn" target="_blank" rel="noopener nofollow">
+			<a href="<?php echo esc_url( $atts['url'] ); ?>" class="afc-cta-btn" target="_blank" rel="noopener nofollow">
 				<?php echo esc_html( $atts['button'] ); ?>
 			</a>
 		<?php endif; ?>
