@@ -100,5 +100,22 @@ function recipe_magazine_customize_register( $wp_customize ) {
 		),
 	) );
 
+	// Disclosure Settings
+	$wp_customize->add_section( 'recipe_magazine_disclosure', array(
+		'title'       => __( 'Disclosure Settings', 'recipe-magazine' ),
+		'priority'    => 40,
+	) );
+
+	$wp_customize->add_setting( 'rt_disclosure_text', array(
+		'default'           => 'This post contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.',
+		'sanitize_callback' => 'sanitize_textarea_field',
+	) );
+	$wp_customize->add_control( 'rt_disclosure_text', array(
+		'label'       => __( 'Global Affiliate Disclosure Text', 'recipe-magazine' ),
+		'description' => __( 'Used by the [rt_disclosure] shortcode.', 'recipe-magazine' ),
+		'section'     => 'recipe_magazine_disclosure',
+		'type'        => 'textarea',
+	) );
+
 }
 add_action( 'customize_register', 'recipe_magazine_customize_register' );
