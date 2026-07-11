@@ -9,6 +9,12 @@
 	<!-- Title -->
 	<div class="afc-hero">
 		<?php the_title( '<h1>', '</h1>' ); ?>
+		<?php
+		$categories = get_the_category();
+		if ( ! empty( $categories ) ) {
+			echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '" class="afc-eyebrow">' . esc_html( strtoupper( $categories[0]->name ) ) . '</a>';
+		}
+		?>
 	</div>
 
 	<!-- The core content, fully driven by native blocks and [rt_*] shortcodes -->
@@ -25,8 +31,9 @@
 			$img_html = '<div class="afc-featured-image">' . get_the_post_thumbnail( null, 'full', array( 'loading' => 'lazy' ) ) . '</div>';
 			// Look for the end of the top disclosure paragraph in the processed output
 			$pattern = '/(<p class="afc-disclosure-top">.*?<\/p>)/s';
-			if ( preg_match( $pattern, $content ) ) {
-				$content = preg_replace( $pattern, '$1' . $img_html, $content, 1 );
+			if ( preg_match( $pattern, $content, $matches ) ) {
+				// Use str_replace instead of preg_replace to avoid backreference risks (e.g. if $img_html contains "$1")
+				$content = str_replace( $matches[1], $matches[1] . $img_html, $content );
 			} else {
 				// Fallback if disclosure isn't found
 				echo $img_html;
